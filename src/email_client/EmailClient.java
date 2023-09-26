@@ -1,4 +1,3 @@
-
 package email_client;
 
 import java.util.Scanner;
@@ -8,43 +7,24 @@ import java.util.ArrayList;
 
 public class EmailClient {
     public void sendEmail(String emailAddress, String subject,String content){
-        //Send a e-mail
-        
-        //Creating new email boject
         Email e = new Email(emailAddress,subject,content);
-        
-        //E-mail adddress of the recieveer
         String toAddress = e.getEmailAddress();
-        
-        //Subject of the E-mail
         String Subject = e.getSubject();
-        
-        //Content of the E-mail
         String Content = e.getContent();
-        
-        //Code for sending the email
-        
-        //Creating SendEmailTLS object
         SendEmailTLS sml = new SendEmailTLS();
         sml.sendMail(toAddress,Subject,Content);
         
         
     }
     public void sendGreeting(){
-        //send tghe birthday greeting
     }
     public void addRecipient(){
-        //Add recipient to the text file
-        // input format - Official: nimal,nimal@gmail.com,ceo
         Scanner Obj = new Scanner(System.in);
         String details = Obj.nextLine() + "\n";
                       
         try {
-            //Accessing ClientList text file
-            FileWriter f = new FileWriter("C:\\Users\\Amila Kasun\\Desktop\\Edu\\UOM\\Academic\\Sem 2\\Program Construction\\Project\\clientList.txt");
-            //Writing recipient details to ClientList text file
+            FileWriter f = new FileWriter("E:\\EmailClientSoftware\\DataSample\\clientList.txt");
             f.write(details);
-            //Closing the file
             f.close();
         } catch (Exception e) {
             System.out.println(e);
@@ -52,12 +32,11 @@ public class EmailClient {
         
     }
     public void whoHasBdays(){
-        //Print the list of recipient having birthdays
     }
     public ArrayList<Recipient> createObjects(){
         ArrayList<Recipient> Recipients = new ArrayList<Recipient>();
         try {
-            File fr = new File("C:\\Users\\Amila Kasun\\Desktop\\Edu\\UOM\\Academic\\Sem 2\\Program Construction\\File handling\\new1.txt");
+            File fr = new File("E:\\EmailClientSoftware\\DataSample\\new1.txt");
             Scanner scr = new Scanner(fr);
             while(scr.hasNextLine()){
                 Recipient r ;

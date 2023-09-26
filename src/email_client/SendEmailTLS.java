@@ -1,4 +1,3 @@
-
 package email_client;
 
 import javax.mail.*;

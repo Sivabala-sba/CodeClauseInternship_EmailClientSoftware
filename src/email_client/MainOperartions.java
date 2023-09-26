@@ -1,4 +1,3 @@
-
 package email_client;
 
 //import java.net.PasswordAuthentication;
@@ -23,7 +22,6 @@ import java.text.SimpleDateFormat;
 public class MainOperartions {
     
     
-    //--------------------------------------------------------------------------------------------------------------
     public void sendEmail(String emailAddress, String subject,String content){
         /*
         Method for sending the mail
@@ -35,24 +33,10 @@ public class MainOperartions {
             content      --> Conetnt of the email
         */
         
-        //Creating new email boject
         Email email = new Email(emailAddress,subject,content);
-        
-        
-        
-        //E-mail adddress of the recieveer
         String toAddress = email.getEmailAddress();
-        
-        //Subject of the E-mail
         String Subject = email.getSubject();
-        
-        //Content of the E-mail
         String Content = email.getContent();
-        
-        //Code for sending the email
-        
-        //Process for sending the email
-        
         String username = "amilakasun2000@gmail.com";
         String password = "acbarfvwgjczsxli";
         String reciever = toAddress;
@@ -95,8 +79,6 @@ public class MainOperartions {
         
         
     }
-    //-------------------------------------------------------------------------------------------------------------------
-    
     
     
     public ArrayList<Recipient> whoHasBirthdays(String Birthday){
@@ -107,9 +89,7 @@ public class MainOperartions {
             Birthday --> Given date. We get an array of recipients who have birthdays, for this date
         */
         
-        //Tempary array to store all recipient objects in the application
         ArrayList<Recipient> tempArray = Email_Client.RecipientsArray;
-        //Year , Month and date of input birthday
         String [] inputDate = Birthday.split("/",-2);
         
         ArrayList<Recipient> birthdayRec = new ArrayList<Recipient>();
@@ -117,7 +97,6 @@ public class MainOperartions {
         for(int i = 0; i < tempArray.size(); i++){
             if(tempArray.get(i) instanceof Personal || tempArray.get(i) instanceof OfficialFriend){
                 
-                //Array containing the Year , Month , Date of birthday of relavent recipient onject
                 String [] birthdayDetails = tempArray.get(i).getBirthday().split("/",-2);
                 
                 if(birthdayDetails[1].equals(inputDate[1]) && birthdayDetails[2].equals(inputDate[2])){
@@ -132,8 +111,7 @@ public class MainOperartions {
          
     }
     
-    //-------------------------------------------------------------------------------------------------------------------
-    
+
     public void addRecipient(String RecipientInfo){
         /*
         Method for adding recipient to the text file
@@ -145,7 +123,6 @@ public class MainOperartions {
         
         // input format - Official: nimal,nimal@gmail.com,ceo
         
-        //Getting the date in string format
         Date thisDate = new Date();
         SimpleDateFormat date = new SimpleDateFormat("YYYY/MM/dd");    
         String today = date.format(thisDate);
@@ -153,7 +130,7 @@ public class MainOperartions {
                       
         try {
             //Accessing ClientList text file
-            FileWriter f = new FileWriter("C:\\Users\\Amila Kasun\\Desktop\\Edu\\UOM\\Academic\\Sem 2\\Program Construction\\Project Text Files\\ClientList.txt", true);
+            FileWriter f = new FileWriter("E:\\EmailClientSoftware\\DataSample\\ClientList.txt", true);
             
             //Checking whether the client is already in the list
             if(isInClientList(RecipientInfo)){
@@ -236,7 +213,7 @@ public class MainOperartions {
         ArrayList<Recipient> Recipients = new ArrayList<Recipient>();
         try {
             //File where the details of recipients are stored
-            File fr = new File("C:\\Users\\Amila Kasun\\Desktop\\Edu\\UOM\\Academic\\Sem 2\\Program Construction\\Project Text Files\\ClientList.txt");
+            File fr = new File("E:\\EmailClientSoftware\\DataSample\\ClientList.txt");
             if(fr.length() == 0){
                 System.out.println("Client List is empty..");
             }
@@ -309,7 +286,7 @@ public class MainOperartions {
         */
         
         try {
-            FileOutputStream f = new FileOutputStream("C:\\Users\\Amila Kasun\\Desktop\\Edu\\UOM\\Academic\\Sem 2\\Program Construction\\Project Text Files\\EmailObjects.ser");
+            FileOutputStream f = new FileOutputStream("E:\\EmailClientSoftware\\DataSample\\EmailObjects.ser");
             
             ObjectOutputStream out = new ObjectOutputStream(f);
             
@@ -333,7 +310,7 @@ public class MainOperartions {
         //ArrayList<Email> emailsArray = new ArrayList<Email>();
         
         try {
-            FileInputStream filein = new FileInputStream("C:\\Users\\Amila Kasun\\Desktop\\Edu\\UOM\\Academic\\Sem 2\\Program Construction\\Project Text Files\\EmailObjects.ser");
+            FileInputStream filein = new FileInputStream("E:\\EmailClientSoftware\\DataSample\\EmailObjects.ser");
             
             
             ObjectInputStream in = new ObjectInputStream(filein);
@@ -365,7 +342,7 @@ public class MainOperartions {
             ClientDetails --> Details of newly adding recipient
         */
         try {
-            File fr = new File("C:\\Users\\Amila Kasun\\Desktop\\Edu\\UOM\\Academic\\Sem 2\\Program Construction\\Project Text Files\\ClientList.txt");
+            File fr = new File("E:\\EmailClientSoftware\\DataSample\\ClientList.txt");
             
             
             Scanner scr = new Scanner(fr);
